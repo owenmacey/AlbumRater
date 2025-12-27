@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Album | Album Rater</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="sub-header">
+      <a class="back-link" href="index.html">← Back to all albums</a>
+      <div class="header-text">
+        <p class="eyebrow">Album editor</p>
+        <h1>Add a new album</h1>
+        <p class="subtitle">
+          Save new entries right from the site. Album data is stored in your browser and can be
+          exported as JSON whenever you want.
+        </p>
+      </div>
+    </header>
+
+    <main class="album-page">
+      <section class="editor-card">
+        <div class="editor-header">
+          <div>
+            <h2>Album details</h2>
+            <p class="subtitle">
+              Fill out the details below. The album will show up instantly on the homepage and
+              detail pages.
+            </p>
+          </div>
+          <button class="ghost-button" type="button" id="download-json">Download JSON</button>
+        </div>
+
+        <form id="album-form" class="editor-form">
+          <div class="form-grid">
+            <label>
+              Album title
+              <input type="text" name="title" required />
+            </label>
+            <label>
+              Artist
+              <input type="text" name="artist" required />
+            </label>
+            <label>
+              Year
+              <input type="text" name="year" required />
+            </label>
+            <label>
+              Genre
+              <input type="text" name="genre" required />
+            </label>
+            <label>
+              Overall rating (0-10)
+              <input type="number" name="rating" min="0" max="10" step="0.1" required />
+            </label>
+            <label>
+              Date added
+              <input type="date" name="dateAdded" />
+            </label>
+            <label class="span-2">
+              Cover image URL
+              <input type="url" name="cover" placeholder="https://..." required />
+            </label>
+            <label class="span-2">
+              Short description
+              <textarea name="description" rows="2" required></textarea>
+            </label>
+            <label class="span-2">
+              Listening notes
+              <textarea name="notes" rows="3" required></textarea>
+            </label>
+            <label class="span-2">
+              Tags (comma separated)
+              <input type="text" name="tags" placeholder="Late-night, Headphones" />
+            </label>
+          </div>
+
+          <div class="track-editor">
+            <div class="track-header">
+              <h3>Tracks</h3>
+              <button type="button" class="ghost-button" id="add-track">Add track</button>
+            </div>
+            <div id="track-fields" class="track-fields"></div>
+          </div>
+
+          <p id="form-status" class="form-status" role="status"></p>
+          <button class="cta" type="submit">Save album</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Need to edit existing albums? Download the JSON and replace the data file.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

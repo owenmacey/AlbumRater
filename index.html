@@ -41,75 +41,7 @@
           <option value="recent">Most recently added</option>
           <option value="rating">Highest rated</option>
         </select>
-      </section>
-
-      <section class="editor-card">
-        <div class="editor-header">
-          <div>
-            <h2>Add a new album</h2>
-            <p class="subtitle">
-              Use this form to add albums directly on the site. Entries are saved in your browser
-              and show up instantly in the list and detail pages.
-            </p>
-          </div>
-          <button class="ghost-button" type="button" id="download-json">Download JSON</button>
-        </div>
-
-        <form id="album-form" class="editor-form">
-          <div class="form-grid">
-            <label>
-              Album title
-              <input type="text" name="title" required />
-            </label>
-            <label>
-              Artist
-              <input type="text" name="artist" required />
-            </label>
-            <label>
-              Year
-              <input type="text" name="year" required />
-            </label>
-            <label>
-              Genre
-              <input type="text" name="genre" required />
-            </label>
-            <label>
-              Overall rating (0-10)
-              <input type="number" name="rating" min="0" max="10" step="0.1" required />
-            </label>
-            <label>
-              Date added
-              <input type="date" name="dateAdded" />
-            </label>
-            <label class="span-2">
-              Cover image URL
-              <input type="url" name="cover" placeholder="https://..." required />
-            </label>
-            <label class="span-2">
-              Short description
-              <textarea name="description" rows="2" required></textarea>
-            </label>
-            <label class="span-2">
-              Listening notes
-              <textarea name="notes" rows="3" required></textarea>
-            </label>
-            <label class="span-2">
-              Tags (comma separated)
-              <input type="text" name="tags" placeholder="Late-night, Headphones" />
-            </label>
-          </div>
-
-          <div class="track-editor">
-            <div class="track-header">
-              <h3>Tracks</h3>
-              <button type="button" class="ghost-button" id="add-track">Add track</button>
-            </div>
-            <div id="track-fields" class="track-fields"></div>
-          </div>
-
-          <p id="form-status" class="form-status" role="status"></p>
-          <button class="cta" type="submit">Save album</button>
-        </form>
+        <a class="ghost-button" href="editor.html">Add a new album</a>
       </section>
 
       <section id="albums" class="album-grid" aria-live="polite"></section>

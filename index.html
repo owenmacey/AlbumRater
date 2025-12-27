@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Album Rater | My Listening Log</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">Personal Listening Blog</p>
+        <h1>Album Rater</h1>
+        <p class="subtitle">
+          A curated log of albums I&apos;ve listened to, with ratings, notes, and track-by-track thoughts.
+        </p>
+      </div>
+      <a class="cta" href="#albums">Browse the albums</a>
+    </header>
+
+    <main>
+      <section class="intro-card">
+        <h2>How this site works</h2>
+        <p>
+          Each album has its own page with my overall rating, a short reflection, and individual song
+          scores. To add a new album, you only need to edit the <code>data/albums.json</code> file.
+        </p>
+        <div class="hint">
+          <h3>Quick add checklist</h3>
+          <ol>
+            <li>Duplicate the last album entry in <code>data/albums.json</code>.</li>
+            <li>Update the album <strong>id</strong>, cover image URL, ratings, and track list.</li>
+            <li>Refresh this page to see it appear automatically.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="albums" class="album-grid" aria-live="polite"></section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Built with love for late-night listens and weekend replays.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

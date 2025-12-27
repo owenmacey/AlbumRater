@@ -36,6 +36,18 @@
       </section>
 
       <section class="controls">
+        <div class="search-control">
+          <label for="search-input">Search</label>
+          <div class="search-field">
+            <input
+              type="search"
+              id="search-input"
+              placeholder="Search albums or artists..."
+              autocomplete="off"
+            />
+            <div id="search-suggestions" class="search-suggestions" role="listbox"></div>
+          </div>
+        </div>
         <label for="sort-select">Sort by</label>
         <select id="sort-select">
           <option value="recent">Most recently added</option>

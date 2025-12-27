@@ -42,13 +42,31 @@ const sortAlbums = (albums, sortBy) => {
   return sorted;
 };
 
-const renderAlbumCards = (albums, sortBy = "recent") => {
+const filterAlbums = (albums, searchTerm) => {
+  if (!searchTerm) {
+    return albums;
+  }
+  const query = searchTerm.toLowerCase();
+  return albums.filter(
+    (album) =>
+      album.title.toLowerCase().includes(query) ||
+      album.artist.toLowerCase().includes(query),
+  );
+};
+
+const renderAlbumCards = (albums, sortBy = "recent", searchTerm = "") => {
   const grid = document.getElementById("albums");
   if (!grid) {
     return;
   }
 
-  const sortedAlbums = sortAlbums(albums, sortBy);
+  const filteredAlbums = filterAlbums(albums, searchTerm);
+  const sortedAlbums = sortAlbums(filteredAlbums, sortBy);
+
+  if (sortedAlbums.length === 0) {
+    grid.innerHTML = `<p class="no-results">No results for your search.</p>`;
+    return;
+  }
 
   grid.innerHTML = sortedAlbums
     .map(
@@ -253,15 +271,66 @@ const initAlbumEditor = (albums, renderCallback) => {
 fetchAlbums()
   .then((albums) => {
     const sortSelect = document.getElementById("sort-select");
+    const searchInput = document.getElementById("search-input");
+    const suggestionsEl = document.getElementById("search-suggestions");
     const initialSort = sortSelect ? sortSelect.value : "recent";
-    const renderWithSort = () => {
+    const renderWithSort = (term = "") => {
       const merged = mergeAlbums(albums);
-      renderAlbumCards(merged, sortSelect ? sortSelect.value : initialSort);
+      renderAlbumCards(merged, sortSelect ? sortSelect.value : initialSort, term);
     };
     renderWithSort();
     if (sortSelect) {
-      sortSelect.addEventListener("change", (event) => {
-        renderWithSort();
+      sortSelect.addEventListener("change", () => {
+        renderWithSort(searchInput ? searchInput.value.trim() : "");
+      });
+    }
+    if (searchInput && suggestionsEl) {
+      const updateSuggestions = (term) => {
+        const trimmed = term.trim();
+        if (!trimmed) {
+          suggestionsEl.innerHTML = "";
+          suggestionsEl.classList.remove("visible");
+          return;
+        }
+        const merged = mergeAlbums(albums);
+        const matches = filterAlbums(merged, trimmed)
+          .map((album) => album.title)
+          .filter((value, index, list) => list.indexOf(value) === index)
+          .slice(0, 6);
+        if (matches.length === 0) {
+          suggestionsEl.innerHTML = "";
+          suggestionsEl.classList.remove("visible");
+          return;
+        }
+        suggestionsEl.innerHTML = matches
+          .map((value) => `<button type="button" class="suggestion-item">${value}</button>`)
+          .join("");
+        suggestionsEl.classList.add("visible");
+      };
+
+      searchInput.addEventListener("input", (event) => {
+        const term = event.target.value;
+        updateSuggestions(term);
+        renderWithSort(term.trim());
+      });
+
+      searchInput.addEventListener("focus", (event) => {
+        updateSuggestions(event.target.value);
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!suggestionsEl.contains(event.target) && event.target !== searchInput) {
+          suggestionsEl.classList.remove("visible");
+        }
+      });
+
+      suggestionsEl.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target instanceof HTMLButtonElement) {
+          searchInput.value = target.textContent || "";
+          renderWithSort(searchInput.value.trim());
+          suggestionsEl.classList.remove("visible");
+        }
       });
     }
     initAlbumEditor(albums, renderWithSort);

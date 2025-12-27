@@ -1,0 +1,72 @@
+[
+  {
+    "id": "midnight-bloom",
+    "title": "Midnight Bloom",
+    "artist": "Luna Parks",
+    "year": "2023",
+    "genre": "Dream Pop / Synthwave",
+    "rating": 8.7,
+    "dateAdded": "2024-05-02",
+    "cover": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=600&q=80",
+    "description": "A glowing, neon-lit journey through late-night synths and hushed vocals. It feels like driving with the windows down at 2am.",
+    "notes": "Listened on a rainy Thursday. The production is lush without being overwhelming, and the sequencing keeps pulling me forward.",
+    "tags": ["Late-night", "Headphones", "Moody"],
+    "tracks": [
+      {
+        "title": "Streetlight Reverie",
+        "rating": 9,
+        "notes": "Opener with a perfect rise-and-fall chorus. The bassline is addictive."
+      },
+      {
+        "title": "Velvet Skyline",
+        "rating": 8,
+        "notes": "Smooth verses, shimmering hooks. Might be the best vocal take on the record."
+      },
+      {
+        "title": "Neon Rivers",
+        "rating": 8.5,
+        "notes": "The drum groove keeps me locked in. Great layering in the bridge."
+      },
+      {
+        "title": "Afterglow",
+        "rating": 9.2,
+        "notes": "A slow burn that hits hard by the final minute."
+      }
+    ]
+  },
+  {
+    "id": "sunset-polaroids",
+    "title": "Sunset Polaroids",
+    "artist": "Harborline",
+    "year": "2021",
+    "genre": "Indie Rock / Folk",
+    "rating": 7.9,
+    "dateAdded": "2024-04-18",
+    "cover": "https://images.unsplash.com/photo-1485579149621-3123dd979885?auto=format&fit=crop&w=600&q=80",
+    "description": "Warm guitar textures and nostalgic lyrics that feel like flipping through old photographs.",
+    "notes": "Played this on a long weekend drive. The mid-album stretch is mellow but the closing track saves it.",
+    "tags": ["Road trip", "Warm", "Storytelling"],
+    "tracks": [
+      {
+        "title": "Golden Hour",
+        "rating": 8.5,
+        "notes": "Effortless hook. The slide guitar gives it a sun-soaked glow."
+      },
+      {
+        "title": "Paper Planes",
+        "rating": 7.4,
+        "notes": "Pretty verses, the chorus doesn&apos;t fully land for me."
+      },
+      {
+        "title": "Harborview",
+        "rating": 8,
+        "notes": "Great storytelling and a punchy outro."
+      },
+      {
+        "title": "Window Seat",
+        "rating": 7.8,
+        "notes": "Quiet closer, feels like a soft exhale."
+      }
+    ]
+  }
+]

@@ -111,6 +111,107 @@ main {
   gap: 1.5rem;
 }
 
+.editor-card {
+  background: var(--surface);
+  border-radius: 1.5rem;
+  border: 1px solid var(--border);
+  padding: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.editor-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.form-grid label,
+.track-field label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+input,
+textarea,
+select {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  background: #14141c;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.track-editor {
+  display: grid;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.track-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.track-fields {
+  display: grid;
+  gap: 1rem;
+}
+
+.track-field {
+  background: #14141c;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.form-status {
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+.ghost-button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.ghost-button:hover {
+  border-color: var(--accent-dark);
+  color: var(--accent-dark);
+}
+
 .album-card {
   background: var(--surface);
   border-radius: 1.25rem;

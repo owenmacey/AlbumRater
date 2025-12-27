@@ -1,4 +1,5 @@
 const albumDataPath = "data/albums.json";
+const localStorageKey = "albumRaterLocalAlbums";
 
 const fetchAlbums = async () => {
   const response = await fetch(albumDataPath);
@@ -6,6 +7,29 @@ const fetchAlbums = async () => {
     throw new Error("Unable to load album data.");
   }
   return response.json();
+};
+
+const getLocalAlbums = () => {
+  const stored = localStorage.getItem(localStorageKey);
+  if (!stored) {
+    return [];
+  }
+  try {
+    const parsed = JSON.parse(stored);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    console.error("Unable to parse saved albums", error);
+    return [];
+  }
+};
+
+const saveLocalAlbums = (albums) => {
+  localStorage.setItem(localStorageKey, JSON.stringify(albums));
+};
+
+const mergeAlbums = (baseAlbums) => {
+  const localAlbums = getLocalAlbums();
+  return [...baseAlbums, ...localAlbums];
 };
 
 const sortAlbums = (albums, sortBy) => {
@@ -95,17 +119,153 @@ const renderAlbumPage = (albums) => {
     .join("");
 };
 
+const slugify = (value) =>
+  value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+const buildTrackField = (index) => `
+  <div class="track-field" data-index="${index}">
+    <label>
+      Track title
+      <input type="text" name="trackTitle-${index}" required />
+    </label>
+    <label>
+      Rating
+      <input type="number" name="trackRating-${index}" min="0" max="10" step="0.1" required />
+    </label>
+    <label class="span-2">
+      Notes
+      <input type="text" name="trackNotes-${index}" required />
+    </label>
+    <button type="button" class="ghost-button remove-track" data-index="${index}">Remove</button>
+  </div>
+`;
+
+const hydrateTrackFields = (container, initialCount = 2) => {
+  container.innerHTML = "";
+  for (let index = 0; index < initialCount; index += 1) {
+    container.insertAdjacentHTML("beforeend", buildTrackField(index));
+  }
+};
+
+const gatherTracks = (form, container) => {
+  const fields = Array.from(container.querySelectorAll(".track-field"));
+  return fields.map((field) => {
+    const index = field.dataset.index;
+    return {
+      title: form[`trackTitle-${index}`].value.trim(),
+      rating: Number(form[`trackRating-${index}`].value),
+      notes: form[`trackNotes-${index}`].value.trim(),
+    };
+  });
+};
+
+const initAlbumEditor = (albums, renderCallback) => {
+  const form = document.getElementById("album-form");
+  const trackContainer = document.getElementById("track-fields");
+  const addTrackButton = document.getElementById("add-track");
+  const statusEl = document.getElementById("form-status");
+  const downloadButton = document.getElementById("download-json");
+
+  if (!form || !trackContainer || !addTrackButton || !statusEl) {
+    return;
+  }
+
+  hydrateTrackFields(trackContainer);
+
+  addTrackButton.addEventListener("click", () => {
+    const nextIndex = trackContainer.querySelectorAll(".track-field").length;
+    trackContainer.insertAdjacentHTML("beforeend", buildTrackField(nextIndex));
+  });
+
+  trackContainer.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target instanceof HTMLButtonElement && target.classList.contains("remove-track")) {
+      target.closest(".track-field")?.remove();
+    }
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const title = formData.get("title").toString().trim();
+    const artist = formData.get("artist").toString().trim();
+    const year = formData.get("year").toString().trim();
+    const genre = formData.get("genre").toString().trim();
+    const rating = Number(formData.get("rating"));
+    const cover = formData.get("cover").toString().trim();
+    const description = formData.get("description").toString().trim();
+    const notes = formData.get("notes").toString().trim();
+    const dateAddedInput = formData.get("dateAdded").toString();
+    const tagsInput = formData.get("tags").toString();
+
+    const id = slugify(`${artist}-${title}`);
+    const dateAdded = dateAddedInput || new Date().toISOString().split("T")[0];
+    const tags = tagsInput
+      .split(",")
+      .map((tag) => tag.trim())
+      .filter(Boolean);
+
+    const tracks = gatherTracks(form, trackContainer);
+
+    const newAlbum = {
+      id,
+      title,
+      artist,
+      year,
+      genre,
+      rating,
+      dateAdded,
+      cover,
+      description,
+      notes,
+      tags,
+      tracks,
+    };
+
+    const existing = getLocalAlbums();
+    saveLocalAlbums([...existing, newAlbum]);
+    statusEl.textContent = `Saved ${title}!`;
+    form.reset();
+    hydrateTrackFields(trackContainer);
+    renderCallback();
+  });
+
+  if (downloadButton) {
+    downloadButton.addEventListener("click", () => {
+      const existing = getLocalAlbums();
+      const blob = new Blob([JSON.stringify(existing, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "albumrater-local-albums.json";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    });
+  }
+};
+
 fetchAlbums()
   .then((albums) => {
     const sortSelect = document.getElementById("sort-select");
     const initialSort = sortSelect ? sortSelect.value : "recent";
-    renderAlbumCards(albums, initialSort);
+    const renderWithSort = () => {
+      const merged = mergeAlbums(albums);
+      renderAlbumCards(merged, sortSelect ? sortSelect.value : initialSort);
+    };
+    renderWithSort();
     if (sortSelect) {
       sortSelect.addEventListener("change", (event) => {
-        renderAlbumCards(albums, event.target.value);
+        renderWithSort();
       });
     }
-    renderAlbumPage(albums);
+    initAlbumEditor(albums, renderWithSort);
+    renderAlbumPage(mergeAlbums(albums));
   })
   .catch((error) => {
     const grid = document.getElementById("albums");

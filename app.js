@@ -8,13 +8,25 @@ const fetchAlbums = async () => {
   return response.json();
 };
 
-const renderAlbumCards = (albums) => {
+const sortAlbums = (albums, sortBy) => {
+  const sorted = [...albums];
+  if (sortBy === "rating") {
+    sorted.sort((a, b) => b.rating - a.rating);
+    return sorted;
+  }
+  sorted.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+  return sorted;
+};
+
+const renderAlbumCards = (albums, sortBy = "recent") => {
   const grid = document.getElementById("albums");
   if (!grid) {
     return;
   }
 
-  grid.innerHTML = albums
+  const sortedAlbums = sortAlbums(albums, sortBy);
+
+  grid.innerHTML = sortedAlbums
     .map(
       (album) => `
         <a class="album-card" href="album.html?id=${album.id}">
@@ -85,7 +97,14 @@ const renderAlbumPage = (albums) => {
 
 fetchAlbums()
   .then((albums) => {
-    renderAlbumCards(albums);
+    const sortSelect = document.getElementById("sort-select");
+    const initialSort = sortSelect ? sortSelect.value : "recent";
+    renderAlbumCards(albums, initialSort);
+    if (sortSelect) {
+      sortSelect.addEventListener("change", (event) => {
+        renderAlbumCards(albums, event.target.value);
+      });
+    }
     renderAlbumPage(albums);
   })
   .catch((error) => {

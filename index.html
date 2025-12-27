@@ -29,10 +29,18 @@
           <h3>Quick add checklist</h3>
           <ol>
             <li>Duplicate the last album entry in <code>data/albums.json</code>.</li>
-            <li>Update the album <strong>id</strong>, cover image URL, ratings, and track list.</li>
+            <li>Update the album <strong>id</strong>, <strong>dateAdded</strong>, cover image URL, ratings, and track list.</li>
             <li>Refresh this page to see it appear automatically.</li>
           </ol>
         </div>
+      </section>
+
+      <section class="controls">
+        <label for="sort-select">Sort by</label>
+        <select id="sort-select">
+          <option value="recent">Most recently added</option>
+          <option value="rating">Highest rated</option>
+        </select>
       </section>
 
       <section id="albums" class="album-grid" aria-live="polite"></section>

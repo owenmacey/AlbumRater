@@ -1,12 +1,12 @@
 :root {
-  color-scheme: light;
-  --bg: #f8f5f1;
-  --surface: #ffffff;
-  --text: #201e1f;
-  --muted: #5c5c63;
-  --accent: #8b5cf6;
-  --accent-dark: #6d28d9;
-  --border: #e2d9cf;
+  color-scheme: dark;
+  --bg: #0f0f14;
+  --surface: #191923;
+  --text: #f5f3f0;
+  --muted: #b7b2b6;
+  --accent: #a78bfa;
+  --accent-dark: #c4b5fd;
+  --border: #2c2b35;
   font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -28,7 +28,7 @@ a {
 }
 
 .site-header {
-  background: linear-gradient(135deg, #fef3c7, #ede9fe);
+  background: linear-gradient(135deg, #1f1b2e, #2c1f3f);
   padding: 4rem 10vw 3rem;
   display: flex;
   align-items: center;
@@ -56,7 +56,7 @@ a {
 
 .cta {
   background: var(--accent);
-  color: #fff;
+  color: #140f25;
   padding: 0.9rem 1.6rem;
   border-radius: 999px;
   font-weight: 600;
@@ -81,7 +81,7 @@ main {
   padding: 2rem;
   border-radius: 1.5rem;
   border: 1px solid var(--border);
-  box-shadow: 0 20px 40px rgba(32, 30, 31, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .intro-card h2 {
@@ -92,7 +92,7 @@ main {
   margin-top: 1.5rem;
   padding: 1.25rem;
   border-radius: 1rem;
-  background: #f6f1ff;
+  background: #221a35;
 }
 
 .hint h3 {
@@ -123,7 +123,7 @@ main {
 
 .album-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(32, 30, 31, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 .album-card img {
@@ -146,7 +146,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #ede9fe;
+  background: #2a213b;
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
   font-weight: 600;
@@ -215,11 +215,11 @@ main {
 }
 
 .tag {
-  background: #fef3c7;
+  background: #3a2f19;
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
   font-size: 0.85rem;
-  color: #92400e;
+  color: #f3cc88;
 }
 
 .tracklist {
@@ -241,7 +241,7 @@ main {
   gap: 1rem;
   padding: 1rem;
   border-radius: 1rem;
-  background: #f9fafb;
+  background: #222231;
 }
 
 .track p {
@@ -250,9 +250,26 @@ main {
 }
 
 .listening-notes {
-  background: #ede9fe;
+  background: #221a35;
   padding: 2rem;
   border-radius: 1.5rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.controls select {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
 }
 
 @media (max-width: 900px) {

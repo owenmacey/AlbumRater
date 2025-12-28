@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Album Details | Album Rater</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="sub-header">
+      <a class="back-link" href="index.html">← Back to all albums</a>
+      <div class="header-text">
+        <p class="eyebrow" id="album-artist"></p>
+        <h1 id="album-title"></h1>
+        <p class="subtitle" id="album-meta"></p>
+      </div>
+    </header>
+
+    <main class="album-page">
+      <section class="album-hero">
+        <img id="album-cover" alt="" />
+        <div class="album-summary">
+          <div class="rating" id="album-rating"></div>
+          <p id="album-description"></p>
+          <div class="tag-list" id="album-tags"></div>
+        </div>
+      </section>
+
+      <section class="tracklist">
+        <h2>Track-by-track ratings</h2>
+        <div class="track-grid" id="track-grid"></div>
+      </section>
+
+      <section class="listening-notes">
+        <h2>Listening notes</h2>
+        <p id="album-notes"></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Want to add another album? Update <code>data/albums.json</code>.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -5,7 +5,7 @@
     "artist": "Kanye West",
     "year": "2004",
     "genre": "Hip Hop",
-    "rating": 9,
+    "rating": 8,
     "dateAdded": "2025-12-26",
     "cover": "https://i.scdn.co/image/ab67616d0000b27325b055377757b3cdd6f26b78",
     "description": "First Kanye West album and one of if not my favourite one.",
@@ -22,7 +22,7 @@
       },
       {
         "title": "We Don't Care",
-        "rating": 8.2,
+        "rating": 8,
         "notes": "It's just such a catchy and good song."
       },
       {
@@ -42,7 +42,7 @@
       },
       {
         "title": "Spaceship",
-        "rating": 8.6,
+        "rating": 8.5,
         "notes": "\"Lock yourself in a room doing five beats a day for three summers\" Hard."
       },
       {
@@ -52,7 +52,7 @@
       },
       {
         "title": "Never Let Me Down",
-        "rating": 7.8,
+        "rating": 8,
         "notes": ""
       },
       {
@@ -102,17 +102,17 @@
       },
       {
         "title": "Two Words",
-        "rating": 7.6,
+        "rating": 7.5,
         "notes": "Listening to this again made me realize how good it is"
       },
       {
         "title": "Through The Wire",
-        "rating": 9.8,
+        "rating": 10,
         "notes": "One of the greatest Kanye songs."
       },
       {
         "title": "Family Business",
-        "rating": 6.6,
+        "rating": 6,
         "notes": ""
       },
       {
@@ -123,37 +123,70 @@
     ]
   },
   {
-    "id": "sunset-polaroids",
-    "title": "Sunset Polaroids",
-    "artist": "Harborline",
-    "year": "2021",
-    "genre": "Indie Rock / Folk",
-    "rating": 7.9,
-    "dateAdded": "2024-04-18",
-    "cover": "https://images.unsplash.com/photo-1485579149621-3123dd979885?auto=format&fit=crop&w=600&q=80",
-    "description": "Warm guitar textures and nostalgic lyrics that feel like flipping through old photographs.",
-    "notes": "Played this on a long weekend drive. The mid-album stretch is mellow but the closing track saves it.",
-    "tags": ["Road trip", "Warm", "Storytelling"],
+    "id": "freddie-gibbs-alfredo",
+    "title": "Alfredo",
+    "artist": "Freddie Gibbs",
+    "year": "2020",
+    "genre": "Hip Hop",
+    "rating": 8.5,
+    "dateAdded": "2025-12-27",
+    "cover": "https://i.scdn.co/image/ab67616d0000b27352c24049a16d59e98a638651",
+    "description": "Alfredo is a collaborative studio album by American rapper Freddie Gibbs and American hip-hop producer the Alchemist.",
+    "notes": "Didn't realize just how good the album is damn.",
+    "tags": [
+      "Late-night",
+      "HD 450BT"
+    ],
     "tracks": [
       {
-        "title": "Golden Hour",
-        "rating": 8.5,
-        "notes": "Effortless hook. The slide guitar gives it a sun-soaked glow."
+        "title": "1985",
+        "rating": 9.5,
+        "notes": "Perfect beat, beautiful flow"
       },
       {
-        "title": "Paper Planes",
-        "rating": 7.4,
-        "notes": "Pretty verses, the chorus doesn&apos;t fully land for me."
+        "title": "God is Perfect",
+        "rating": 9.5,
+        "notes": "My first listen, fuck this ones fire too"
       },
       {
-        "title": "Harborview",
+        "title": "Scottie Beam",
         "rating": 8,
-        "notes": "Great storytelling and a punchy outro."
+        "notes": "Rick Ross is one of the best ppl to have feature on ur track"
       },
       {
-        "title": "Window Seat",
-        "rating": 7.8,
-        "notes": "Quiet closer, feels like a soft exhale."
+        "title": "Look at Me",
+        "rating": 7,
+        "notes": "Great flow again, but I find the \"look at me\" beat repetitive."
+      },
+      {
+        "title": "Frank Lucas",
+        "rating": 7.5,
+        "notes": ""
+      },
+      {
+        "title": "Something to Rap About",
+        "rating": 7.5,
+        "notes": ""
+      },
+      {
+        "title": "Baby $hit",
+        "rating": 9,
+        "notes": "Stank face the entire time"
+      },
+      {
+        "title": "Babies & Fools",
+        "rating": 6.5,
+        "notes": ""
+      },
+      {
+        "title": "Skinny Suge",
+        "rating": 8,
+        "notes": ""
+      },
+      {
+        "title": "All Glass",
+        "rating": 8,
+        "notes": ""
       }
     ]
   }

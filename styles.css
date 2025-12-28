@@ -192,6 +192,25 @@ textarea {
   gap: 1rem;
 }
 
+.track-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.track-toggle input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+}
+
+.interlude-pill {
+  background: #1f2937;
+  color: #d1d5db;
+}
+
 .form-status {
   color: var(--accent-dark);
   font-weight: 600;

@@ -27,11 +27,6 @@ const saveLocalAlbums = (albums) => {
   localStorage.setItem(localStorageKey, JSON.stringify(albums));
 };
 
-const mergeAlbums = (baseAlbums) => {
-  const localAlbums = getLocalAlbums();
-  return [...baseAlbums, ...localAlbums];
-};
-
 const sortAlbums = (albums, sortBy) => {
   const sorted = [...albums];
   if (sortBy === "rating") {
@@ -130,7 +125,11 @@ const renderAlbumPage = (albums) => {
             <h3>${index + 1}. ${track.title}</h3>
             <p>${track.notes}</p>
           </div>
-          <span class="rating-pill">${track.rating}/10</span>
+          ${
+            track.interlude
+              ? "<span class=\"rating-pill interlude-pill\">Interlude</span>"
+              : `<span class="rating-pill">${track.rating}/10</span>`
+          }
         </div>
       `,
     )
@@ -154,6 +153,10 @@ const buildTrackField = (index) => `
       Rating
       <input type="number" name="trackRating-${index}" min="0" max="10" step="0.1" required />
     </label>
+    <label class="track-toggle">
+      <input type="checkbox" name="trackInterlude-${index}" />
+      Interlude (no rating)
+    </label>
     <label class="span-2">
       Notes
       <input type="text" name="trackNotes-${index}" required />
@@ -173,15 +176,17 @@ const gatherTracks = (form, container) => {
   const fields = Array.from(container.querySelectorAll(".track-field"));
   return fields.map((field) => {
     const index = field.dataset.index;
+    const interlude = form[`trackInterlude-${index}`].checked;
     return {
       title: form[`trackTitle-${index}`].value.trim(),
-      rating: Number(form[`trackRating-${index}`].value),
+      rating: interlude ? null : Number(form[`trackRating-${index}`].value),
+      interlude,
       notes: form[`trackNotes-${index}`].value.trim(),
     };
   });
 };
 
-const initAlbumEditor = (albums, renderCallback) => {
+const initAlbumEditor = () => {
   const form = document.getElementById("album-form");
   const trackContainer = document.getElementById("track-fields");
   const addTrackButton = document.getElementById("add-track");
@@ -203,6 +208,24 @@ const initAlbumEditor = (albums, renderCallback) => {
     const target = event.target;
     if (target instanceof HTMLButtonElement && target.classList.contains("remove-track")) {
       target.closest(".track-field")?.remove();
+    }
+  });
+
+  trackContainer.addEventListener("change", (event) => {
+    const target = event.target;
+    if (target instanceof HTMLInputElement && target.name.startsWith("trackInterlude-")) {
+      const field = target.closest(".track-field");
+      const ratingInput = field?.querySelector(`input[name="trackRating-${field?.dataset.index}"]`);
+      if (ratingInput instanceof HTMLInputElement) {
+        if (target.checked) {
+          ratingInput.value = "";
+          ratingInput.required = false;
+          ratingInput.disabled = true;
+        } else {
+          ratingInput.required = true;
+          ratingInput.disabled = false;
+        }
+      }
     }
   });
 
@@ -246,10 +269,9 @@ const initAlbumEditor = (albums, renderCallback) => {
 
     const existing = getLocalAlbums();
     saveLocalAlbums([...existing, newAlbum]);
-    statusEl.textContent = `Saved ${title}!`;
+    statusEl.textContent = `Saved ${title}! Download the JSON to update your data file.`;
     form.reset();
     hydrateTrackFields(trackContainer);
-    renderCallback();
   });
 
   if (downloadButton) {
@@ -275,8 +297,7 @@ fetchAlbums()
     const suggestionsEl = document.getElementById("search-suggestions");
     const initialSort = sortSelect ? sortSelect.value : "recent";
     const renderWithSort = (term = "") => {
-      const merged = mergeAlbums(albums);
-      renderAlbumCards(merged, sortSelect ? sortSelect.value : initialSort, term);
+      renderAlbumCards(albums, sortSelect ? sortSelect.value : initialSort, term);
     };
     renderWithSort();
     if (sortSelect) {
@@ -292,8 +313,7 @@ fetchAlbums()
           suggestionsEl.classList.remove("visible");
           return;
         }
-        const merged = mergeAlbums(albums);
-        const matches = filterAlbums(merged, trimmed)
+        const matches = filterAlbums(albums, trimmed)
           .map((album) => album.title)
           .filter((value, index, list) => list.indexOf(value) === index)
           .slice(0, 6);
@@ -333,8 +353,8 @@ fetchAlbums()
         }
       });
     }
-    initAlbumEditor(albums, renderWithSort);
-    renderAlbumPage(mergeAlbums(albums));
+    initAlbumEditor();
+    renderAlbumPage(albums);
   })
   .catch((error) => {
     const grid = document.getElementById("albums");

@@ -1,36 +1,124 @@
 [
   {
-    "id": "midnight-bloom",
-    "title": "Midnight Bloom",
-    "artist": "Luna Parks",
-    "year": "2023",
-    "genre": "Dream Pop / Synthwave",
-    "rating": 8.7,
-    "dateAdded": "2024-05-02",
-    "cover": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=600&q=80",
-    "description": "A glowing, neon-lit journey through late-night synths and hushed vocals. It feels like driving with the windows down at 2am.",
-    "notes": "Listened on a rainy Thursday. The production is lush without being overwhelming, and the sequencing keeps pulling me forward.",
-    "tags": ["Late-night", "Headphones", "Moody"],
+    "id": "kanye-west-the-college-dropout",
+    "title": "The College Dropout",
+    "artist": "Kanye West",
+    "year": "2004",
+    "genre": "Hip Hop",
+    "rating": 9,
+    "dateAdded": "2025-12-26",
+    "cover": "https://i.scdn.co/image/ab67616d0000b27325b055377757b3cdd6f26b78",
+    "description": "First Kanye West album and one of if not my favourite one.",
+    "notes": "Just skimmed through most of it besides listening to Two Words all the way through. I've heard this album so many times.",
+    "tags": [
+      "Late-night",
+      "HD 450BT"
+    ],
     "tracks": [
       {
-        "title": "Streetlight Reverie",
+        "title": "Intro",
+        "rating": 0,
+        "notes": "Interlude"
+      },
+      {
+        "title": "We Don't Care",
+        "rating": 8.2,
+        "notes": "It's just such a catchy and good song."
+      },
+      {
+        "title": "Graduation Day",
+        "rating": 0,
+        "notes": "Interlude"
+      },
+      {
+        "title": "All Falls Down",
         "rating": 9,
-        "notes": "Opener with a perfect rise-and-fall chorus. The bassline is addictive."
+        "notes": "I love Syleena Johnson's singing on the beat of this song."
       },
       {
-        "title": "Velvet Skyline",
-        "rating": 8,
-        "notes": "Smooth verses, shimmering hooks. Might be the best vocal take on the record."
+        "title": "I'll Fly Away",
+        "rating": 0,
+        "notes": "Interlude"
       },
       {
-        "title": "Neon Rivers",
+        "title": "Spaceship",
+        "rating": 8.6,
+        "notes": "\"Lock yourself in a room doing five beats a day for three summers\" Hard."
+      },
+      {
+        "title": "Jesus Walks",
         "rating": 8.5,
-        "notes": "The drum groove keeps me locked in. Great layering in the bridge."
+        "notes": "My dads favourite on the album. Classic Kanye song."
       },
       {
-        "title": "Afterglow",
-        "rating": 9.2,
-        "notes": "A slow burn that hits hard by the final minute."
+        "title": "Never Let Me Down",
+        "rating": 7.8,
+        "notes": ""
+      },
+      {
+        "title": "Get Em High",
+        "rating": 8,
+        "notes": "I love the first flow on this track."
+      },
+      {
+        "title": "Workout Plan",
+        "rating": 0,
+        "notes": "Interlude"
+      },
+      {
+        "title": "The New Workout Plan",
+        "rating": 8,
+        "notes": "This song is so fun to listen to."
+      },
+      {
+        "title": "Slow Jamz",
+        "rating": 9.5,
+        "notes": "Jamie Foxx on that podcast"
+      },
+      {
+        "title": "Breathe In Breathe Out",
+        "rating": 3,
+        "notes": ""
+      },
+      {
+        "title": "School Spirit Skit 1",
+        "rating": 0,
+        "notes": "Interlude"
+      },
+      {
+        "title": "School Spirit",
+        "rating": 6.5,
+        "notes": ""
+      },
+      {
+        "title": "School Spirit Skit 2",
+        "rating": 0,
+        "notes": "Interlude"
+      },
+      {
+        "title": "Lil Jimmy Skit",
+        "rating": 0,
+        "notes": "Interlude \"IDK where I'm going, my dad died\""
+      },
+      {
+        "title": "Two Words",
+        "rating": 7.6,
+        "notes": "Listening to this again made me realize how good it is"
+      },
+      {
+        "title": "Through The Wire",
+        "rating": 9.8,
+        "notes": "One of the greatest Kanye songs."
+      },
+      {
+        "title": "Family Business",
+        "rating": 6.6,
+        "notes": ""
+      },
+      {
+        "title": "Last Call",
+        "rating": 5,
+        "notes": "Long ahh song"
       }
     ]
   },

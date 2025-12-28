@@ -154,8 +154,8 @@ const buildTrackField = (index) => `
       <input type="number" name="trackRating-${index}" min="0" max="10" step="0.1" required />
     </label>
     <label class="track-toggle">
+      <span>Interlude</span>
       <input type="checkbox" name="trackInterlude-${index}" />
-      Interlude (no rating)
     </label>
     <label class="span-2">
       Notes

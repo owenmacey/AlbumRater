@@ -1,5 +1,107 @@
 [
     {
+      "id": "noah-kahan-stick-season",
+      "title": "Stick Season",
+      "artist": "Noah Kahan",
+      "year": "2022",
+      "genre": "Folk, Indie",
+      "rating": 8.5,
+      "dateAdded": "2025-12-29",
+      "cover": "data:image/jpeg;base64,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",
+      "description": "Stick Season is the third studio album by American singer-songwriter Noah Kahan, who also served as producer alongside Gabe Simon. It was released on October 14, 2022, by Mercury Records and Republic Records. The album was supported by two singles: the title track and \"Northern Attitude\". An expanded edition of the album, titled Stick Season (We'll All Be Here Forever), was released on June 9, 2023, with seven additional tracks, including an extended version of \"The View Between Villages\".",
+      "notes": "Even though this album may not have the highest individual song rating, I find it to be one of the most consistent albums and I love listening to each song.",
+      "tags": [
+        "Train",
+        "Air Pod Pros"
+      ],
+      "tracks": [
+        {
+          "title": "Northern Attitude",
+          "rating": 8.5,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "Stick Season",
+          "rating": 6,
+          "interlude": false,
+          "notes": "Rating has gone down because of how overplayed it is"
+        },
+        {
+          "title": "All My Love",
+          "rating": 8,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "She Calls Me Back",
+          "rating": 8.5,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "Come Over",
+          "rating": 5,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "New Perspective",
+          "rating": 9,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "Everywhere, Everything",
+          "rating": 9,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "Orange Juice",
+          "rating": 5.5,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "Strawberry Wine",
+          "rating": 7.5,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "Growing Sideways",
+          "rating": 8.5,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "Halloween",
+          "rating": 7,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "Homesick",
+          "rating": 10,
+          "interlude": false,
+          "notes": "Honestly might make a way to make this a 11/10, love this song."
+        },
+        {
+          "title": "Still",
+          "rating": 7,
+          "interlude": false,
+          "notes": ""
+        },
+        {
+          "title": "The View Between Villages",
+          "rating": 8.5,
+          "interlude": false,
+          "notes": ""
+        }
+      ]
+    },
+    {
     "id": "red-hot-chili-peppers-the-getaway",
     "title": "The Getaway",
     "artist": "Red Hot Chili Peppers",
